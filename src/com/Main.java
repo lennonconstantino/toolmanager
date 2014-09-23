@@ -112,6 +112,8 @@ public class Main {
 		
 		manager.persist(user);
 		
+		System.out.println(user.toString());
+		
 		manager.getTransaction().commit();
 		
 		manager.close();
