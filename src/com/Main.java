@@ -58,7 +58,7 @@ public class Main {
         for(Usuario c : usuarioService.findAll()){
             System.out.println(c.getEmail());
         }
-                 
+        //          
         /**
          * ALWAYS NEED TO BE CALLED!
          */
