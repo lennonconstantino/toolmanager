@@ -1,5 +1,6 @@
 package com;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -55,5 +56,24 @@ public class User extends Person {
 	}
 	public void setLastLogin(Calendar lastLogin) {
 		this.lastLogin = lastLogin;
+	}
+	@Override
+	public String toString()
+	{
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		
+		String toString = String.format("User[username: %s " +
+										"login: %s password: %s " +
+										"lastLogin: %s " +
+										"firstname: %s lastname: %s " +
+										"birthday: %s ]",
+										this.getUsername(),
+										this.getLogin(),
+										this.getPassword(),
+										sdf.format(this.getLastLogin().getTime()),
+										this.getFirstname(),
+										this.getLastname(),
+										sdf.format(this.getBirthday().getTime()));
+		return toString;
 	}
 }
