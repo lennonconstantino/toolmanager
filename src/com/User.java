@@ -58,7 +58,7 @@ public class User extends Person {
 		this.lastLogin = lastLogin;
 	}
 	@Override
-	public String toString() //
+	public String toString() 
 	{
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
