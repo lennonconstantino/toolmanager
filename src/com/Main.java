@@ -111,7 +111,7 @@ public class Main {
 		user.setBooks(books);		
 		
 		manager.persist(user);
-		
+		//
 		System.out.println(user.toString());
 		
 		manager.getTransaction().commit();
