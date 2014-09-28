@@ -1,6 +1,6 @@
 package com.toolmanager.dao;
 
-import java.lang.reflect.ParameterizedType;
+//import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
  
@@ -30,7 +30,7 @@ public class GenericDAO<T> {
     	return entityManager.getCriteriaBuilder();
     }  
     public T getById(Long id) {
-        return (T) entityManager.find(getTypeClass(), id);
+        return (T) entityManager.find(entityClass, id);
     }
  
     public void save(T entity) {
@@ -44,12 +44,7 @@ public class GenericDAO<T> {
     public void delete(T entity) {
         entityManager.remove(entity);
     }
- 	/*
-    public List<T> findAll() {
-        return entityManager.createQuery(("FROM " + getTypeClass().getName()))
-                .getResultList();
-    }
-    */
+
 	public List<T> findAll() {
 		@SuppressWarnings("rawtypes")
 		CriteriaQuery cq = getCriteria().createQuery();
@@ -84,11 +79,11 @@ public class GenericDAO<T> {
 	public List<T> getList(String sql) {
 		Query query = entityManager.createNamedQuery(sql);
 		return query.getResultList();
-	}    
-    
-    private Class<?> getTypeClass() {
-        Class<?> clazz = (Class<?>) ((ParameterizedType) this.getClass()
-                .getGenericSuperclass()).getActualTypeArguments()[1];
-        return clazz;
+	}
+ 	/*
+    public List<T> findAll() {
+        return entityManager.createQuery(("FROM " + getTypeClass().getName()))
+                .getResultList();
     }
+    */	
 }
