@@ -10,6 +10,6 @@ public interface UserDAO {
 	public void remove(User user);
 	public User getUser(String username);
 	public User getUserById(Long id_user);
-	public List<User> findUsers(User user);
+	//public List<User> findUsers(User user);
 	public List<User> findAll();
 }

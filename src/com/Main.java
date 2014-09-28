@@ -109,7 +109,7 @@ public class Main {
 		manager.getTransaction().begin();
 		
 		User user = new User();//User("Oliveil2", "123456", "LennonConstantino",Calendar.getInstance());
-		user.setFirstname("Lennon");
+		user.setFirstname("Allan");
 		user.setLastname("Constantino");
 		user.setBirthday(Calendar.getInstance());
 		user.setLastLogin(Calendar.getInstance());

@@ -6,6 +6,7 @@ import java.util.List;
  
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
 
 //import org.hibernate.Query;
  
@@ -22,7 +23,11 @@ public class GenericDAO<T> {
     public GenericDAO(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
- 
+        
+    public CriteriaBuilder getCriteria()
+    {
+    	return entityManager.getCriteriaBuilder();
+    }  
     public T getById(Long id) {
         return (T) entityManager.find(getTypeClass(), id);
     }
