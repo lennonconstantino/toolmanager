@@ -27,7 +27,23 @@ public class UserService {
             simpleEntityManager.rollBack();
         }
     }
-     
+
+    public void update(User user){
+        try{
+            simpleEntityManager.beginTransaction();
+            dao.update(user);
+            simpleEntityManager.commit();
+        }catch(Exception e){
+            e.printStackTrace();
+            simpleEntityManager.rollBack();
+        }
+    }
+    
+    public User getUserById(Long id_user)
+    {
+    	return dao.getUserById(id_user);
+    }
+    
     public List<User> findAll(){
         return dao.findAll();
     }    
