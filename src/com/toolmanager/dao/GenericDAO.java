@@ -1,4 +1,4 @@
-package com;
+package com.toolmanager.dao;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
