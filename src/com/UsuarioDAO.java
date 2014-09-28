@@ -7,7 +7,7 @@ import com.toolmanager.dao.GenericDAO;
 public class UsuarioDAO extends GenericDAO<Usuario> {
 
 	public UsuarioDAO(EntityManager entityManager) {
-		super(entityManager);
+		super(Usuario.class,entityManager);
 	}
 
 }

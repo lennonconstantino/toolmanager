@@ -6,12 +6,13 @@ import javax.persistence.EntityManager;
 
 import com.toolmanager.dao.GenericDAO;
 import com.toolmanager.dao.UserDAO;
+import com.toolmanager.model.Task;
 import com.toolmanager.model.User;
 
 public class UserDaoImpl extends GenericDAO<User> implements UserDAO {
 
 	public UserDaoImpl(EntityManager entityManager) {
-		super(entityManager);
+		super(User.class, entityManager);
 	}
 
 	@Override

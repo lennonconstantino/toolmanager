@@ -11,7 +11,7 @@ import com.toolmanager.model.Note;
 public class NoteDaoImpl extends GenericDAO<Note> implements NoteDAO {
 
 	public NoteDaoImpl(EntityManager entityManager) {
-		super(entityManager);
+		super(Note.class, entityManager);
 	}
 
 	@Override

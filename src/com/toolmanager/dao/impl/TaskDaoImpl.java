@@ -11,7 +11,7 @@ import com.toolmanager.model.Task;
 public class TaskDaoImpl extends GenericDAO<Task> implements TaskDAO {
 
 	public TaskDaoImpl(EntityManager entityManager) {
-		super(entityManager);
+		super(Task.class, entityManager);
 	}
 
 	@Override

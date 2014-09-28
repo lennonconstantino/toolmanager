@@ -7,21 +7,22 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
-
-//import org.hibernate.Query;
+import javax.persistence.criteria.CriteriaQuery;
  
 /**
- * @author gabriel
+ * @author Lennon
  *
- * Oct 17, 2013
+ * Oct 28, 2014
  */
  
 @SuppressWarnings("unchecked")
 public class GenericDAO<T> {
     private EntityManager entityManager;
- 
-    public GenericDAO(EntityManager entityManager) {
+    private Class<T> entityClass;
+    
+    public GenericDAO(Class<T> entityClass,EntityManager entityManager) {
         this.entityManager = entityManager;
+        this.entityClass = entityClass;
     }
         
     public CriteriaBuilder getCriteria()
@@ -43,11 +44,18 @@ public class GenericDAO<T> {
     public void delete(T entity) {
         entityManager.remove(entity);
     }
- 	
+ 	/*
     public List<T> findAll() {
         return entityManager.createQuery(("FROM " + getTypeClass().getName()))
                 .getResultList();
     }
+    */
+	public List<T> findAll() {
+		@SuppressWarnings("rawtypes")
+		CriteriaQuery cq = getCriteria().createQuery();
+		cq.select(cq.from(entityClass));
+		return entityManager.createQuery(cq).getResultList();
+	}    
  
 	public T get(String sql, String value) {
 		List<T> list = new ArrayList<T>();

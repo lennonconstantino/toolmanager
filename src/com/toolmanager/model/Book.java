@@ -3,8 +3,9 @@ package com.toolmanager.model;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
-//import java.util.Set;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 //import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,11 +37,11 @@ public class Book {
 	//@ManyToMany(cascade = CascadeType.PERSIST)
     //Set<Note> notes;
 	
-	@OneToMany
-	@JoinTable(name="book_note",
-	joinColumns=@JoinColumn(name="id_book_fk"),
-	inverseJoinColumns=@JoinColumn(name="id_note_fk"))
-    List<Note> notes;	
+	@OneToMany(cascade = CascadeType.ALL)
+	//@JoinTable(name="book_note",
+	//joinColumns=@JoinColumn(name="id_book_fk"),
+	//inverseJoinColumns=@JoinColumn(name="id_note_fk"))
+    Set<Note> notes;	
 	
 	public Book(){}
 	/*
@@ -58,7 +59,7 @@ public class Book {
 	 * @param notes
 	 */
 	public Book(String name, String description, Calendar dateCreation,
-			List<Note> notes) {
+			Set<Note> notes) {
 		super();
 		this.name = name;
 		this.description = description;
@@ -89,10 +90,10 @@ public class Book {
 	public void setDateCreation(Calendar dateCreation) {
 		this.dateCreation = dateCreation;
 	}
-	public List<Note> getNotes() {
+	public Set<Note> getNotes() {
 		return notes;
 	}
-	public void setNotes(List<Note> notes) {
+	public void setNotes(Set<Note> notes) {
 		this.notes = notes;
 	}
 }

@@ -1,10 +1,12 @@
 package com.toolmanager.model;
 
 import java.util.Calendar;
+import java.util.Set;
 //import java.util.Collection;
 import java.util.List;
 //import java.util.Set;
 
+import javax.persistence.CascadeType;
 //import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,6 +24,7 @@ import javax.persistence.JoinTable;
 
 @Entity
 @Table(name="task")
+
 public class Task {
 	@Id
 	@GeneratedValue
@@ -46,11 +49,11 @@ public class Task {
 	@Enumerated
 	private Role role;
 	
-	@OneToMany
-	@JoinTable(name="task_book",
-	joinColumns=@JoinColumn(name="id_task_fk"),
-	inverseJoinColumns=@JoinColumn(name="id_book_fk"))
-    List<Book> books;	
+	@OneToMany(cascade = CascadeType.ALL)
+	//@JoinTable(name="task_book",
+	//joinColumns=@JoinColumn(name="id_task_fk"),
+	//inverseJoinColumns=@JoinColumn(name="id_book_fk"))
+    Set<Book> books;	
 	
 	public Task(){}
 	/**
@@ -66,7 +69,7 @@ public class Task {
 	 */
 	public Task(String name, String description, Calendar date_started,
 			Calendar date_finished, int progress, boolean rememberMe,
-			Status status, Role role, List<Book> books) {
+			Status status, Role role, Set<Book> books) {
 		super();
 		this.name = name;
 		this.description = description;
@@ -132,10 +135,10 @@ public class Task {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	public List<Book> getBooks() {
+	public Set<Book> getBooks() {
 		return books;
 	}
-	public void setBooks(List<Book> books) {
+	public void setBooks(Set<Book> books) {
 		this.books = books;
 	}	
 	@Override

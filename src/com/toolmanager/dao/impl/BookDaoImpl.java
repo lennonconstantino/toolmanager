@@ -10,7 +10,7 @@ import com.toolmanager.model.Book;
 
 public class BookDaoImpl extends GenericDAO<Book> implements BookDAO {
 	public BookDaoImpl(EntityManager entityManager) {
-		super(entityManager);
+		super(Book.class, entityManager);
 	}
 
 	@Override

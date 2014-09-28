@@ -36,13 +36,13 @@ public class Person {
 	@OneToOne
 	@JoinColumn(name="id_address")	
 	private Address address;
-	@ManyToMany(cascade = CascadeType.PERSIST)
+	@ManyToMany(cascade = CascadeType.ALL)
 	Set<Task> tasks;
 	
-	@ManyToMany(cascade = CascadeType.PERSIST)
+	@ManyToMany(cascade = CascadeType.ALL)
     Set<Book> books;
 	
-	@ManyToMany(cascade = CascadeType.PERSIST)
+	@ManyToMany(cascade = CascadeType.ALL)
 	Set<Note> notes;
 	
 	public Person(){}
@@ -96,6 +96,24 @@ public class Person {
 	public void setBooks(Set<Book> books) {
 		this.books = books;
 	}
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	public Set<Task> getTasks() {
+		return tasks;
+	}
+	public void setTasks(Set<Task> tasks) {
+		this.tasks = tasks;
+	}
+	public Set<Note> getNotes() {
+		return notes;
+	}
+	public void setNotes(Set<Note> notes) {
+		this.notes = notes;
+	}	
 	@Override
 	public String toString() {
 		return "Person [id_person=" + id_person + ", firstname=" + firstname
