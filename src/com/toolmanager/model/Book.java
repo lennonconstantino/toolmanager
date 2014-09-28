@@ -1,24 +1,20 @@
 package com.toolmanager.model;
 
 import java.util.Calendar;
-import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-//import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-//import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
+//import javax.persistence.JoinColumn;
+//import javax.persistence.JoinTable;
+//import javax.persistence.ManyToMany;
 
 @Entity
 @Table(name="book")
@@ -44,14 +40,6 @@ public class Book {
     Set<Note> notes;	
 	
 	public Book(){}
-	/*
-	public Book(String name, String description, Calendar dateCreation) {
-		super();
-		this.name = name;
-		this.description = description;
-		this.dateCreation = dateCreation;
-	}
-	*/
 	/**
 	 * @param name
 	 * @param description

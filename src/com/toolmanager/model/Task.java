@@ -2,12 +2,8 @@ package com.toolmanager.model;
 
 import java.util.Calendar;
 import java.util.Set;
-//import java.util.Collection;
-import java.util.List;
-//import java.util.Set;
 
 import javax.persistence.CascadeType;
-//import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -18,8 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
+//import javax.persistence.JoinColumn;
+//import javax.persistence.JoinTable;
 
 
 @Entity
@@ -48,7 +44,8 @@ public class Task {
 	private Status status;
 	@Enumerated
 	private Role role;
-	
+	@Column(name="id_person_owner")
+	Long id_person_owner;
 	@OneToMany(cascade = CascadeType.ALL)
 	//@JoinTable(name="task_book",
 	//joinColumns=@JoinColumn(name="id_task_fk"),
@@ -65,11 +62,12 @@ public class Task {
 	 * @param rememberMe
 	 * @param status
 	 * @param role
+	 * @param id_person_owner
 	 * @param books
 	 */
 	public Task(String name, String description, Calendar date_started,
 			Calendar date_finished, int progress, boolean rememberMe,
-			Status status, Role role, Set<Book> books) {
+			Status status, Role role, Long id_person_owner, Set<Book> books) {
 		super();
 		this.name = name;
 		this.description = description;
@@ -79,6 +77,7 @@ public class Task {
 		this.rememberMe = rememberMe;
 		this.status = status;
 		this.role = role;
+		this.id_person_owner = id_person_owner;
 		this.books = books;
 	}
 	public Long getId_task() {
@@ -135,6 +134,14 @@ public class Task {
 	public void setRole(Role role) {
 		this.role = role;
 	}
+	Long getId_person_owner()
+	{
+		return id_person_owner;
+	}
+	void setId_person_owner(Long id_person_owner)
+	{
+		this.id_person_owner = id_person_owner;
+	}
 	public Set<Book> getBooks() {
 		return books;
 	}
@@ -146,6 +153,7 @@ public class Task {
 		return "Task [id_task=" + id_task + ", name=" + name + ", description="
 				+ description + ", date_started=" + date_started
 				+ ", date_finished=" + date_finished + ", progress=" + progress
+				+ ", id_person_owner=" + id_person_owner
 				+ ", rememberMe=" + rememberMe + "]";
 	}
 }

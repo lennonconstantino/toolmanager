@@ -31,6 +31,8 @@ public class Note {
 	private Calendar dateLastAlter;	
 	@Enumerated
 	private Role role;
+	@Column(name="id_person_owner")
+	private Long id_person_owner;
 	
 	public Note(){}
 	/**
@@ -38,15 +40,17 @@ public class Note {
 	 * @param description
 	 * @param dateCreation
 	 * @param dateLastAlter
+	 * @param id_person_owner
 	 * @param role
 	 */
 	public Note(String name, String description, Calendar dateCreation,
-			Calendar dateLastAlter, Role role) {
+			Calendar dateLastAlter, Long id_person_owner, Role role) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.dateCreation = dateCreation;
 		this.dateLastAlter = dateLastAlter;
+		this.id_person_owner = id_person_owner;
 		this.role = role;
 	}
 	public String getName() {
@@ -79,6 +83,14 @@ public class Note {
 	public void setDateLastAlter(Calendar dateLastAlter) {
 		this.dateLastAlter = dateLastAlter;
 	}
+	Long getId_person_owner()
+	{
+		return id_person_owner;
+	}
+	void setId_person_owner(Long id_person_owner)
+	{
+		this.id_person_owner = id_person_owner; 
+	}
 	public Role getRole() {
 		return role;
 	}
@@ -89,6 +101,7 @@ public class Note {
 	public String toString() {
 		return "Note [id_note=" + id_note + ", name=" + name + ", description="
 				+ description + ", dateCreation=" + dateCreation
-				+ ", dateLastAlter=" + dateLastAlter + ", role=" + role + "]";
+				+ ", dateLastAlter=" + dateLastAlter + ", id_person_owner = " + id_person_owner 
+				+ ", role=" + role + "]";
 	}
 }
