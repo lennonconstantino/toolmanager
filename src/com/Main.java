@@ -19,7 +19,7 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		testeLixo4();
+		testeLixo5();
 	}
 	
 	public static void testeLixo1()
@@ -101,7 +101,7 @@ public class Main {
 	}	
 	public static void testeLixo4()
 	{
-		
+		/*
 		// Funciona
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("fusion-PU");
 		EntityManager manager = factory.createEntityManager();
@@ -127,7 +127,7 @@ public class Main {
 		
 		manager.close();
 		factory.close();
-		
+		*/
 	}
 	public static void testeLixo5()
 	{
