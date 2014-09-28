@@ -11,6 +11,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import com.Usuario;
+import com.toolmanager.model.User;
 
 
 public class Main {
@@ -18,7 +19,7 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		testeLixo5();
+		testeLixo4();
 	}
 	
 	public static void testeLixo1()
@@ -100,14 +101,14 @@ public class Main {
 	}	
 	public static void testeLixo4()
 	{
-		/*
+		
 		// Funciona
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("fusion-PU");
 		EntityManager manager = factory.createEntityManager();
 		
 		manager.getTransaction().begin();
 		
-		User user = new User("Oliveil2", "123456", "LennonConstantino",Calendar.getInstance());
+		User user = new User();//User("Oliveil2", "123456", "LennonConstantino",Calendar.getInstance());
 		user.setFirstname("Lennon");
 		user.setLastname("Constantino");
 		user.setBirthday(Calendar.getInstance());
@@ -125,7 +126,7 @@ public class Main {
 		
 		manager.close();
 		factory.close();
-		*/
+		
 	}
 	public static void testeLixo5()
 	{
