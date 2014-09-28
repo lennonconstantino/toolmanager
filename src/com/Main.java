@@ -38,7 +38,7 @@ public class Main {
 		manager.getTransaction().begin();
 		
 		Usuario usuario = new Usuario();
-		usuario.setEmail("contato@k19.com.br");
+		usuario.setEmail("contato@gmail.com.br");
 		usuario.setDataDeCadastro(Calendar.getInstance());
 		
 		manager.persist(usuario);
