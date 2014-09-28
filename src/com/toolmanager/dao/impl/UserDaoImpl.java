@@ -6,8 +6,8 @@ import javax.persistence.EntityManager;
 
 import com.toolmanager.dao.GenericDAO;
 import com.toolmanager.dao.UserDAO;
-import com.toolmanager.model.Task;
 import com.toolmanager.model.User;
+//import com.toolmanager.model.Task;
 
 public class UserDaoImpl extends GenericDAO<User> implements UserDAO {
 
