@@ -28,7 +28,7 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		testeLixo5();
+		testeLixo6();
 	}
 	
 	public static void testeLixo1()
@@ -186,5 +186,9 @@ public class Main {
         // ALWAYS NEED TO BE CALLED!
         //
         simpleEntityManager.close();        
+	}
+	public static void testeLixo6()
+	{
+		
 	}
 }
