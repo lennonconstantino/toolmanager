@@ -112,6 +112,7 @@ public class Main {
 		user.setFirstname("Lennon");
 		user.setLastname("Constantino");
 		user.setBirthday(Calendar.getInstance());
+		user.setLastLogin(Calendar.getInstance());
 		//Set<Book> books = new HashSet<Book>();
 		//Set<Note> notes = new HashSet<Note>();
 		//notes.add(new Note("Goals","I did 2 goals yesterday",Calendar.getInstance()));		

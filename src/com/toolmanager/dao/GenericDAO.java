@@ -1,9 +1,13 @@
 package com.toolmanager.dao;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
 import java.util.List;
  
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+//import org.hibernate.Query;
  
 /**
  * @author gabriel
@@ -34,12 +38,41 @@ public class GenericDAO<T> {
     public void delete(T entity) {
         entityManager.remove(entity);
     }
- 
+ 	
     public List<T> findAll() {
         return entityManager.createQuery(("FROM " + getTypeClass().getName()))
                 .getResultList();
     }
  
+	public T get(String sql, String value) {
+		List<T> list = new ArrayList<T>();
+		Query query = entityManager.createNamedQuery(sql).setParameter("param", value);
+		
+		list = query.getResultList();
+		if (list.size() > 0){
+			return list.get(0);
+		}else{
+			return null;
+		}
+	}
+	
+	public T get(String sql, Long value) {
+		List<T> list = new ArrayList<T>();
+		Query query = entityManager.createNamedQuery(sql).setParameter("param", value);
+		
+		list = query.getResultList();
+		if (list.size() > 0){
+			return list.get(0);
+		}else{
+			return null;
+		}
+	}
+	
+	public List<T> getList(String sql) {
+		Query query = entityManager.createNamedQuery(sql);
+		return query.getResultList();
+	}    
+    
     private Class<?> getTypeClass() {
         Class<?> clazz = (Class<?>) ((ParameterizedType) this.getClass()
                 .getGenericSuperclass()).getActualTypeArguments()[1];
