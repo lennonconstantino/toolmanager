@@ -68,12 +68,20 @@ public class Main {
         for(Usuario c : usuarioService.findAll()){
             System.out.println(c.getEmail());
         }
+<<<<<<< HEAD
                  
         ///
         // ALWAYS NEED TO BE CALLED!
         //
         simpleEntityManager.close();
         */		
+=======
+        //          
+        /**
+         * ALWAYS NEED TO BE CALLED!
+         */
+        simpleEntityManager.close();		
+>>>>>>> origin/VERSION
 	}
 	public static void testeLixo3()
 	{
