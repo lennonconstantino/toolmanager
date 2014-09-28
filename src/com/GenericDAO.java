@@ -12,15 +12,15 @@ import javax.persistence.EntityManager;
  */
  
 @SuppressWarnings("unchecked")
-public class GenericDAO<PK, T> {
+public class GenericDAO<T> {
     private EntityManager entityManager;
  
     public GenericDAO(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
  
-    public T getById(PK pk) {
-        return (T) entityManager.find(getTypeClass(), pk);
+    public T getById(Long id) {
+        return (T) entityManager.find(getTypeClass(), id);
     }
  
     public void save(T entity) {

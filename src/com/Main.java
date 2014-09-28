@@ -18,11 +18,12 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		testeLixo4();
+		testeLixo5();
 	}
 	
 	public static void testeLixo1()
 	{
+		/*
 		// Funciona
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("fusion-PU");
 		EntityManager manager = factory.createEntityManager();
@@ -38,17 +39,19 @@ public class Main {
 		manager.getTransaction().commit();
 		
 		manager.close();
-		factory.close();		
+		factory.close();
+		*/		
 	}
 	public static void testeLixo2()
 	{
+		/*
         String persistenceUnitName = "fusion-PU";
         
         SimpleEntityManager simpleEntityManager = new SimpleEntityManager(persistenceUnitName);
          
-        /**
-         * THE SERVICE LAYER ENCAPSULATES EVERY BEGIN/COMMIT/ROLLBACK
-         */
+        //
+        // THE SERVICE LAYER ENCAPSULATES EVERY BEGIN/COMMIT/ROLLBACK
+        // 
         UsuarioService usuarioService = new UsuarioService(simpleEntityManager);
          
         usuarioService.save(new Usuario("allain.delon@gmail.com", Calendar.getInstance(), null));
@@ -59,13 +62,15 @@ public class Main {
             System.out.println(c.getEmail());
         }
                  
-        /**
-         * ALWAYS NEED TO BE CALLED!
-         */
-        simpleEntityManager.close();		
+        ///
+        // ALWAYS NEED TO BE CALLED!
+        //
+        simpleEntityManager.close();
+        */		
 	}
 	public static void testeLixo3()
 	{
+		/*
 		// Funciona
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("fusion-PU");
 		EntityManager manager = factory.createEntityManager();
@@ -91,9 +96,11 @@ public class Main {
 		
 		manager.close();
 		factory.close();
+		*/
 	}	
 	public static void testeLixo4()
 	{
+		/*
 		// Funciona
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("fusion-PU");
 		EntityManager manager = factory.createEntityManager();
@@ -104,11 +111,11 @@ public class Main {
 		user.setFirstname("Lennon");
 		user.setLastname("Constantino");
 		user.setBirthday(Calendar.getInstance());
-		Set<Book> books = new HashSet<Book>();
-		Set<Note> notes = new HashSet<Note>();
-		notes.add(new Note("Goals","I did 2 goals yesterday",Calendar.getInstance()));		
-		books.add(new Book("study","after I get up",Calendar.getInstance(),notes));
-		user.setBooks(books);		
+		//Set<Book> books = new HashSet<Book>();
+		//Set<Note> notes = new HashSet<Note>();
+		//notes.add(new Note("Goals","I did 2 goals yesterday",Calendar.getInstance()));		
+		//books.add(new Book("study","after I get up",Calendar.getInstance(),notes));
+		//user.setBooks(books);		
 		
 		manager.persist(user);
 		
@@ -118,5 +125,10 @@ public class Main {
 		
 		manager.close();
 		factory.close();
+		*/
+	}
+	public static void testeLixo5()
+	{
+		
 	}
 }
