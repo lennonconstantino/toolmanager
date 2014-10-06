@@ -1,7 +1,7 @@
 package com.toolmanager.model;
 
 import java.util.Calendar;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +10,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -46,11 +47,12 @@ public class Task {
 	private Role role;
 	@Column(name="id_person_owner")
 	Long id_person_owner;
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(unique=false, nullable=true, insertable=true, updatable=true)
 	//@JoinTable(name="task_book",
-	//joinColumns=@JoinColumn(name="id_task_fk"),
-	//inverseJoinColumns=@JoinColumn(name="id_book_fk"))
-    Set<Book> books;	
+	//joinColumns=@JoinColumn(name="id_task",unique=false, nullable=true, insertable=true, updatable=true),
+	//inverseJoinColumns=@JoinColumn(name="id_book"))
+    List<Book> books;	
 	
 	public Task(){}
 	/**
@@ -67,7 +69,7 @@ public class Task {
 	 */
 	public Task(String name, String description, Calendar date_started,
 			Calendar date_finished, int progress, boolean rememberMe,
-			Status status, Role role, Long id_person_owner, Set<Book> books) {
+			Status status, Role role, Long id_person_owner, List<Book> books) {
 		super();
 		this.name = name;
 		this.description = description;
@@ -142,10 +144,10 @@ public class Task {
 	{
 		this.id_person_owner = id_person_owner;
 	}
-	public Set<Book> getBooks() {
+	public List<Book> getBooks() {
 		return books;
 	}
-	public void setBooks(Set<Book> books) {
+	public void setBooks(List<Book> books) {
 		this.books = books;
 	}	
 	@Override

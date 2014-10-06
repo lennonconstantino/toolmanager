@@ -1,5 +1,6 @@
 package com.toolmanager.model;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -7,14 +8,24 @@ import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
+import javax.persistence.NamedQueries;
 
 @Entity
 @Table(name="note")
-public class Note {
+@NamedQueries({
+	@NamedQuery(name="Note.findNoteByName",query="SELECT n FROM Note n WHERE n.name = :param"),
+	@NamedQuery(name="Note.findNotesByIdPersonOwner",query="SELECT n FROM Note n WHERE n.id_person_owner = :param")
+})
+public class Note implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+		
 	@Id
 	@GeneratedValue
 	@Column(name="id_note")

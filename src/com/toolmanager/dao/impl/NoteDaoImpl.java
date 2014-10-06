@@ -38,16 +38,20 @@ public class NoteDaoImpl extends GenericDAO<Note> implements NoteDAO {
 
 	@Override
 	public Note getNoteByName(String name) {
-		String sql = "SELECT n FROM note n WHERE n.name = :param";
-		return super.get(sql, name);
+		//String sql = "SELECT * FROM note n WHERE n.name = :param";
+		return super.getWithNamedQuery(FIND_NOTE_BY_NAME, name);//get(sql, name); 
 	}
 
 	@Override
 	public List<Note> findAllNote(Long id_person) {
-		String sql = "SELECT n.id_note, n.name, n.description, n.dateCreation, n.dateLastAlter, n.role " +
-					 "FROM note n, person_note p " +
-					 "WHERE n.id_note = p.notes_id_note " +
-					 "AND p.person_id_person = " + id_person;
+		//String sql = "SELECT n.id_note, n.name, n.description, n.dateCreation, n.dateLastAlter, n.role " +
+		//			 "FROM note n, person_note p " +
+		//			 "WHERE n.id_note = p.notes_id_note " +
+		//			 "AND p.person_id_person = " + id_person;
+		//String sql = "SELECT n FROM note n, person_note p WHERE p.person_id_person = "+ id_person;
+		//String sql = "SELECT n FROM note n WHERE n.id_person_owner = "+ id_person;
+		String sql = "SELECT * FROM note n WHERE n.id_person_owner = " + id_person;
+		//String sql = "Note.findByUser";
 		return super.getList(sql);
 	}
 }

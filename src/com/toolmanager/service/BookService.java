@@ -27,6 +27,22 @@ public class BookService {
         }
     }
      
+    public void delete(Book book)
+    {
+        try{
+            simpleEntityManager.beginTransaction();
+            dao.delete(book);
+            simpleEntityManager.commit();
+        }catch(Exception e){
+            e.printStackTrace();
+            simpleEntityManager.rollBack();
+        }    	
+    }
+    public Book getUserById(Long id_user)
+    {
+    	return dao.getBookById(id_user);
+    }    
+    
     public List<Book> findAll(Long id_person){
         return dao.findAllBook(id_person);
     }

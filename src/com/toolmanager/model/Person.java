@@ -1,7 +1,7 @@
 package com.toolmanager.model;
 
 import java.util.Calendar;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,6 +16,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+//import javax.persistence.JoinColumns;
+//import javax.persistence.JoinTable;
+
 
 
 @Entity
@@ -36,14 +39,16 @@ public class Person {
 	@OneToOne
 	@JoinColumn(name="id_address")	
 	private Address address;
-	@ManyToMany(cascade = CascadeType.ALL)
-	Set<Task> tasks;
+	@ManyToMany(/*mappedBy="person",*/ cascade = CascadeType.ALL)
+	//@JoinTable(name="person_task", joinColumns={@JoinColumn(name="id_person")}, inverseJoinColumns={@JoinColumn(name="id_task")})
+	List<Task> tasks;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-    Set<Book> books;
+	@ManyToMany(/*mappedBy="person",*/ cascade = CascadeType.ALL)
 	
-	@ManyToMany(cascade = CascadeType.ALL)
-	Set<Note> notes;
+    List<Book> books;
+	
+	@ManyToMany(/*mappedBy="person",*/ cascade = CascadeType.ALL)
+	List<Note> notes;
 	
 	public Person(){}
 	/**
@@ -56,7 +61,7 @@ public class Person {
 	 * @param notes
 	 */
 	public Person(String firstname, String lastname, Calendar birthday,
-			Address address, Set<Task> tasks, Set<Book> books, Set<Note> notes) {
+			Address address, List<Task> tasks, List<Book> books, List<Note> notes) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -90,10 +95,10 @@ public class Person {
 	public void setBirthday(Calendar birthday) {
 		this.birthday = birthday;
 	}
-	public Set<Book> getBooks() {
+	public List<Book> getBooks() {
 		return books;
 	}
-	public void setBooks(Set<Book> books) {
+	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
 	public Address getAddress() {
@@ -102,16 +107,16 @@ public class Person {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	public Set<Task> getTasks() {
+	public List<Task> getTasks() {
 		return tasks;
 	}
-	public void setTasks(Set<Task> tasks) {
+	public void setTasks(List<Task> tasks) {
 		this.tasks = tasks;
 	}
-	public Set<Note> getNotes() {
+	public List<Note> getNotes() {
 		return notes;
 	}
-	public void setNotes(Set<Note> notes) {
+	public void setNotes(List<Note> notes) {
 		this.notes = notes;
 	}	
 	@Override

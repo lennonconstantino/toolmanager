@@ -1,11 +1,18 @@
 <!-- <?xml version="1.0" encoding="UTF-8"?> -->
+
 <persistence version="2.0"
 	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 
-	<persistence-unit name="fusion-PU" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="fusion-PU" transaction-type="RESOURCE_LOCAL"> <!-- JTA -->
+		<!-- Jboss uses hibernate as default persistence engine  -->
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-
+		<!-- <jta-data-source>jdbc/sample</jta-data-source> -->
+		
+        <!-- <jta-data-source>java:/MySqlDS</jta-data-source> -->
+        <!-- <class>com.toolmanager.model.Note</class> -->
+        <!-- <exclude-unlisted-classes>true</exclude-unlisted-classes> -->
+        
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/fusionDB" />
@@ -16,6 +23,13 @@
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="false" />
             <property name="hibernate.format_sql" value="false"/>
+            
+			<property name ="javax.persistence.jdbc.url" value ="jdbc:mysql://localhost:3307/fusionDB"/>  
+			<property name="jta.UserTransaction" value="javax.transaction.UserTransaction"/>            
+			<property name="transaction.manager_lookup_class" value="org.hibernate.transaction.JOTMTransactionManagerLookup"/>  
+            <!-- <property name="hibernate.archive.autodetection" value="class"/> -->
+            
 		</properties>
+		
 	</persistence-unit>
 </persistence>

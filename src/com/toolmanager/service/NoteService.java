@@ -26,7 +26,17 @@ public class NoteService {
             simpleEntityManager.rollBack();
         }
     }
-     
+    
+    public Note getNoteById(Long id_note)
+    {
+    	return dao.getNoteById(id_note);
+    }
+    
+    public Note getNoteByName(String name)
+    {
+    	return dao.getNoteByName(name);
+    }
+    
     public List<Note> findAll(Long id_person){
         return dao.findAllNote(id_person);
     }	
