@@ -28,8 +28,12 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+<<<<<<< HEAD
 		//testeLixo6();
 		testeLixo7();
+=======
+		testeLixo6();
+>>>>>>> origin/VERSION
 	}
 	
 	public static void testeLixo1()
@@ -72,12 +76,20 @@ public class Main {
         for(Usuario c : usuarioService.findAll()){
             System.out.println(c.getEmail());
         }
+<<<<<<< HEAD
                  
         ///
         // ALWAYS NEED TO BE CALLED!
         //
         simpleEntityManager.close();
         */		
+=======
+        //          
+        /**
+         * ALWAYS NEED TO BE CALLED!
+         */
+        simpleEntityManager.close();		
+>>>>>>> origin/VERSION
 	}
 	public static void testeLixo3()
 	{
@@ -190,6 +202,7 @@ public class Main {
 	}
 	public static void testeLixo6()
 	{
+<<<<<<< HEAD
         String persistenceUnitName = "fusion-PU";
         
         SimpleEntityManager simpleEntityManager = new SimpleEntityManager(persistenceUnitName);
@@ -284,5 +297,8 @@ public class Main {
 		//List<Note>
 		Note n = noteService.getNoteByName("Goals");//findAll(1L);//getNoteByName("Goals");//findAll(1L);
         simpleEntityManager.close();      
+=======
+		
+>>>>>>> origin/VERSION
 	}
 }
